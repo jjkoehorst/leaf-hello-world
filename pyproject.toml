@@ -1,0 +1,14 @@
+[tool.poetry]
+name = "hello-world"
+version = "0.1.0"
+description = "Leaf Adapter with a basic Hello World function. Creating a hello world message every minute "
+authors = ["Jasper Koehorst <jasper.koehorst@wur.nl>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+pandas = "^1.3.3"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
