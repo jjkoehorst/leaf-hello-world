@@ -1,0 +1,8 @@
+{
+  "class" : "DEMO",
+  "equipment_id": "demo_equipment",
+  "version": "1.0",
+  "manufacturer": "Demo Manufacturer",
+  "device_type": "DEMO",
+  "application": "DEMO application"
+}
