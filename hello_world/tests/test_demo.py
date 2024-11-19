@@ -30,15 +30,15 @@ class HelloWorldCase(unittest.TestCase):
         logger.info("Test completed. Cleaning up resources.")
 
     def test_demo_adapter(self) -> None:
-        mqtt_output = MQTT("test.mosquitto.org", 1883)
-        mqtt_output.transmit("test", """'{"test": "test"}""")
+        self.output = MQTT("test.mosquitto.org", 1883)
+        # self.output.transmit("test", """'{"test": "test"}""")
         self.instance_data: dict[str, str] = {
             "instance_id": "test_maq",
             "institute": "test_ins",
             "experiment_id": "test_exp",
         }
 
-        adap = HelloWorldAdapter(output=mqtt_output)
+        adap = HelloWorldAdapter(output=self.output)
         adap.start()
 
         # Add assertions

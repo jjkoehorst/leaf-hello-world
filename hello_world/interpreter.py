@@ -1,13 +1,9 @@
 import logging
 import os
-import re
 from datetime import datetime, timezone
-from typing import MutableMapping, Any, List
+from typing import Any
 
-import dateparser
-import requests
 from influxobject import InfluxPoint
-
 from leaf.adapters.equipment_adapter import AbstractInterpreter
 from leaf.modules.logger_modules.logger_utils import get_logger
 
@@ -20,7 +16,7 @@ metadata_fn = os.path.join(current_dir, "device.json")
 
 class HelloWorldInterpreter(AbstractInterpreter):
     # '<institute>/<equipment_id>/<instance_id>/details'
-    def __init__(self, token: str) -> None:
+    def __init__(self) -> None:
         super().__init__()
         logger.info("Initializing DEMO Interpreter")
 

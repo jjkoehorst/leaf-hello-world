@@ -2,7 +2,6 @@ import logging
 import os
 
 from leaf.adapters.equipment_adapter import EquipmentAdapter
-from leaf.adapters.functional_adapters.maq_observations.interpreter import MAQInterpreter
 from leaf.metadata_manager.metadata import MetadataManager
 from leaf.modules.input_modules.polling_watcher import PollingWatcher
 from leaf.modules.input_modules.simple_watcher import SimpleWatcher
@@ -11,6 +10,8 @@ from leaf.modules.phase_modules.measure import MeasurePhase
 from leaf.modules.phase_modules.start import StartPhase
 from leaf.modules.phase_modules.stop import StopPhase
 from leaf.modules.process_modules.discrete_module import DiscreteProcess
+
+from interpreter import HelloWorldInterpreter
 
 logger = get_logger(__name__, log_file="app.log", log_level=logging.DEBUG)
 
@@ -41,7 +42,14 @@ class HelloWorldAdapter(EquipmentAdapter):
         # watcher.add_initialise_callback(details_p.update)
         phase = [start_p, measure_p, stop_p]
         mock_process = [DiscreteProcess(phase)]
-        super().__init__(instance_data=instance_data, watcher=watcher, process_adapters=mock_process, interpreter=MAQInterpreter(token=token), metadata_manager=metadata_manager)  # type: ignore
+
+        instance_data: dict[str, str] = {
+            "instance_id": "test_maq",
+            "institute": "test_ins",
+            "experiment_id": "test_exp",
+        }
+
+        super().__init__(instance_data=instance_data, watcher=watcher, process_adapters=mock_process, interpreter=HelloWorldInterpreter(), metadata_manager=metadata_manager)  # type: ignore
         self._metadata_manager.add_equipment_data(metadata_fn)
 
     def _fetch_data(self):
