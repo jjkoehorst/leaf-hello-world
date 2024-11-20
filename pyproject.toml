@@ -1,16 +1,19 @@
 [tool.poetry]
-name = "hello-world"
+name = "leaf-hello-world"
 version = "0.1.0"
-description = "Leaf Adapter with a basic Hello World function. Creating a hello world message every minute "
+description = "Leaf Adapter with a basic Hello World function. Creating a hello world message every x interval."
 authors = ["Jasper Koehorst <jasper.koehorst@wur.nl>"]
 readme = "README.md"
+packages = [
+    { include = "hello_world" }
+]
 
 [tool.poetry.dependencies]
 python = "^3.12"
 #leaf = {git = "https://gitlab.com/LabEquipmentAdapterFramework/leaf.git", rev = "dev"}
 
 [tool.poetry.plugins."leaf.adapters"]
-hello_world = "hello_world.adapter:HelloWorldAdapter"
+leaf_hello_world = "hello_world.adapter:HelloWorldAdapter"
 
 [build-system]
 requires = ["poetry-core"]
