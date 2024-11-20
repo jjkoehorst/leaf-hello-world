@@ -7,7 +7,7 @@ readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.12"
-leaf = {git = "https://gitlab.com/LabEquipmentAdapterFramework/leaf.git", rev = "dev"}
+#leaf = {git = "https://gitlab.com/LabEquipmentAdapterFramework/leaf.git", rev = "dev"}
 
 [tool.poetry.plugins."leaf.adapters"]
 hello_world = "hello_world.adapter:HelloWorldAdapter"
