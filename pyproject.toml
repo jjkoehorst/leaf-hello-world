@@ -10,7 +10,8 @@ packages = [
 
 [tool.poetry.dependencies]
 python = "^3.12"
-#leaf = {git = "https://gitlab.com/LabEquipmentAdapterFramework/leaf.git", rev = "dev"}
+# leaf = {git = "https://gitlab.com/LabEquipmentAdapterFramework/leaf.git", rev = "dev"}
+pyyaml = "^6.0.2"
 
 [tool.poetry.plugins."leaf.adapters"]
 leaf_hello_world = "hello_world.adapter:HelloWorldAdapter"

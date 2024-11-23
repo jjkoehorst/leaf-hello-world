@@ -23,7 +23,7 @@ class HelloWorldAdapter(EquipmentAdapter):
         instance_data,
         output,
         error_holder: Optional[ErrorHolder] = None,
-        interval: int = 10
+        interval: int = 1
     ) -> None:
         self.error_holder = error_holder
         logger.info(

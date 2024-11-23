@@ -38,7 +38,7 @@ class HelloWorldCase(unittest.TestCase):
             "experiment_id": "test_exp",
         }
 
-        adap = HelloWorldAdapter(output=self.output)
+        adap = HelloWorldAdapter(instance_data=self.instance_data, output=self.output)
         adap.start()
 
         # Add assertions
