@@ -1,12 +1,14 @@
-# EQUIPMENT_INSTANCES:
-#   - equipment:
-#       adapter: MAQAdapter
-#       data:
-#         instance_id: maq_adapter_unlock
-#         institute: unlock
-#       requirements:
-#         token: T_O_K_E_N
-# OUTPUTS:
-#   - plugin: MQTT
-#     broker: test.mosquitto.org
-#     port: 1883
+ EQUIPMENT_INSTANCES:
+   - equipment:
+       adapter: leaf_hello_world
+       data:
+         instance_id: maq_adapter_unlock
+         institute: unlock
+       requirements:
+         token: T_O_K_E_N
+ OUTPUTS:
+   - plugin: MQTT
+     broker: localhost
+     port: 1883
+     username: leaf_mqtt
+     password: your-secure-password

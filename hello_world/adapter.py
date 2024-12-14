@@ -1,10 +1,10 @@
 import logging
 import os
+
 from typing import Optional
 
 from leaf.adapters.equipment_adapter import EquipmentAdapter
 from leaf.error_handler.error_holder import ErrorHolder
-from leaf.metadata_manager.metadata import MetadataManager
 from leaf.modules.input_modules.polling_watcher import PollingWatcher
 from leaf.modules.input_modules.simple_watcher import SimpleWatcher
 from leaf.modules.logger_modules.logger_utils import get_logger
@@ -12,6 +12,7 @@ from leaf.modules.phase_modules.measure import MeasurePhase
 from leaf.modules.phase_modules.start import StartPhase
 from leaf.modules.phase_modules.stop import StopPhase
 from leaf.modules.process_modules.discrete_module import DiscreteProcess
+from leaf_register.metadata import MetadataManager
 
 from hello_world.interpreter import HelloWorldInterpreter
 

@@ -2,10 +2,11 @@ import logging
 import os
 import unittest
 import yaml
-from leaf.adapters.functional_adapters.maq_observations import interpreter
+from hello_world import interpreter
 from leaf.modules.logger_modules.logger_utils import get_logger
 from leaf.modules.output_modules.mqtt import MQTT
 from adapter import HelloWorldAdapter
+from leaf import start
 
 logger = get_logger(__name__, log_file="app.log", log_level=logging.DEBUG)
 
@@ -30,8 +31,7 @@ class HelloWorldCase(unittest.TestCase):
         logger.info("Test completed. Cleaning up resources.")
 
     def test_demo_adapter(self) -> None:
-        self.output = MQTT("test.mosquitto.org", 1883)
-        # self.output.transmit("test", """'{"test": "test"}""")
+        self.output = MQTT("localhost", 1883, username="leaf_mqtt", password="your-secure-password")
         self.instance_data: dict[str, str] = {
             "instance_id": "test_maq",
             "institute": "test_ins",
@@ -46,7 +46,7 @@ class HelloWorldCase(unittest.TestCase):
         logger.info("HelloWorldAdapter started successfully.")
 
     def test_demo_interpreter_id(self) -> None:
-        inter = interpreter.MAQInterpreter(token="_RANDOM_TOKEN_")
+        inter = interpreter.HelloWorldInterpreter()
         logger.debug(f"ID of interpreter: {inter.id}")
         # Add assertions
         self.assertIsNotNone(inter.id)
@@ -61,8 +61,13 @@ class HelloWorldCase(unittest.TestCase):
         logging.warning(f"Adapters loaded: {adapters}")
 
         # Add assertions
-        self.assertIn("hello_world", adapters)
-        self.assertIsNotNone(adapters["hello_world"])
+        self.assertIn("leaf_hello_world", adapters)
+        self.assertIsNotNone(adapters["leaf_hello_world"])
+
+
+    def test_leaf_execution(self):
+        start.main(["--config", "../../example.yaml", "--debug"])
+
 
 if __name__ == "__main__":
     unittest.main()
